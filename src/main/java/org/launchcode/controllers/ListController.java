@@ -30,7 +30,6 @@ public class ListController {
     public String list(Model model) {
 
         model.addAttribute("columns", columnChoices);
-
         return "list";
     }
 
@@ -59,6 +58,9 @@ public class ListController {
         ArrayList<HashMap<String, String>> jobs = JobData.findByColumnAndValue(column, value);
         model.addAttribute("title", "Jobs with " + columnChoices.get(column) + ": " + value);
         model.addAttribute("jobs", jobs);
+        for(int i = 0; i < jobs.size(); i++) {
+            System.out.println(jobs.get(i));
+        }
 
         return "list-jobs";
     }
